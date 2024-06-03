@@ -47,8 +47,10 @@ module.exports = {
     web: false,
   },
   allowedItems: [
+		'assets',
     'inc',
     'js/dist',
+		'vendor',
     'composer.json',
     'composer.lock',
     'index.php',
