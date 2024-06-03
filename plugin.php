@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name:       My Plugin | 我的 WordPress 外掛
- * Plugin URI:        https://cloud.luke.cafe/plugins/
- * Description:       這是一個 WordPress 外掛的範本，可以用來開發新的外掛。
- * Version:           4.0.4
+ * Plugin Name:       R2 WC Line 訂單通知
+ * Plugin URI:        https://github.com/s0985514623/r2-wc-line-notify
+ * Description:       這是一個簡單的WC訂單Line通知，當有新訂單以及訂單狀態改變時發送。
+ * Version:           1.0.0
  * Requires at least: 5.7
  * Requires PHP:      8.
- * Author:            J7
- * Author URI:        https://github.com/j7-dev
+ * Author:            R2
+ * Author URI:        https://github.com/s0985514623
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       my_plugin
@@ -17,9 +17,9 @@
 
 declare (strict_types = 1);
 
-namespace J7\WpPlugin;
+namespace R2\WcLineNotify;
 
-if ( ! \class_exists( 'J7\WpPlugin\Plugin' ) ) {
+if ( ! \class_exists( 'R2\WcLineNotify\Plugin' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
 
 	/**
@@ -51,11 +51,11 @@ if ( ! \class_exists( 'J7\WpPlugin\Plugin' ) ) {
 			// );
 
 			$this->init(
-				[
-					'app_name'    => 'My Plugin',
-					'github_repo' => 'https://github.com/j7-dev/wp-plugin',
-					'callback'    => [ '\J7\WpPlugin\Bootstrap', 'instance' ],
-				]
+				array(
+					'app_name'    => 'R2 WC Line Notify',
+					'github_repo' => 'https://github.com/s0985514623/r2-wc-line-notify',
+					'callback'    => array( '\R2\WcLineNotify\Bootstrap', 'instance' ),
+				)
 			);
 		}
 	}

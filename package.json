@@ -1,6 +1,6 @@
 {
-  "name": "create-wp-vite-plugin",
-  "version": "4.0.4",
+  "name": "r2-wc-line-notify",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "bootstrap": "npm install && composer install --no-interaction",

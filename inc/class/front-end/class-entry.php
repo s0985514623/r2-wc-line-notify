@@ -5,7 +5,7 @@
 
 declare(strict_types=1);
 
-namespace J7\WpPlugin\FrontEnd;
+namespace R2\WcLineNotify\FrontEnd;
 
 /**
  * Class Entry

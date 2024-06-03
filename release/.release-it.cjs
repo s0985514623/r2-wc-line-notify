@@ -11,7 +11,7 @@
  * @see https://github.com/release-it/release-it/blob/main/docs/configuration.md
  */
 
-const releasedPluginName = 'wp-plugin'
+const releasedPluginName = 'r2-wc-line-notify-release'
 
 module.exports = {
   releasedPluginName,
