@@ -64,7 +64,9 @@ final class WcOrder {
 	 * @param string $new_status The new status of the order.
 	 */
 	public function order_status_changed( $order_id, $old_status, $new_status ) {
-		$message = '訂單編號：' . $order_id . '狀態已由：' . $old_status . '變更為：' . $new_status;
+		$old_status_name = wc_get_order_status_name( $old_status );
+		$new_status_name = wc_get_order_status_name( $new_status );
+		$message         = '訂單編號：' . $order_id . '，狀態已由「' . $old_status_name . '」變更為「' . $new_status_name . '」';
 		$this->send_line_notify( $message );
 	}
 
