@@ -3,7 +3,7 @@
  * Plugin Name:       R2 WC Line 訂單通知
  * Plugin URI:        https://github.com/s0985514623/r2-wc-line-notify
  * Description:       這是一個簡單的WC訂單Line通知，當有新訂單以及訂單狀態改變時發送。
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 5.7
  * Requires PHP:      8.
  * Author:            R2
