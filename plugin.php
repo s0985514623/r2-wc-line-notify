@@ -19,9 +19,12 @@ declare (strict_types = 1);
 
 namespace R2\WcLineNotify;
 
-if ( ! \class_exists( 'R2\WcLineNotify\Plugin' ) ) {
-	require_once __DIR__ . '/vendor/autoload.php';
+// autoload
+use R2\WcLineNotify\Bootstrap;
 
+if ( ! \class_exists( 'R2\WcLineNotify\Plugin' ) ) {
+
+	require_once __DIR__ . '/vendor/autoload.php';
 	/**
 		* Class Plugin
 		*/
@@ -33,7 +36,6 @@ if ( ! \class_exists( 'R2\WcLineNotify\Plugin' ) ) {
 		 * Constructor
 		 */
 		public function __construct() {
-			require_once __DIR__ . '/inc/class/class-bootstrap.php';
 
 			// $this->required_plugins = array(
 			// array(
@@ -49,12 +51,11 @@ if ( ! \class_exists( 'R2\WcLineNotify\Plugin' ) ) {
 			// 'required' => true,
 			// ),
 			// );
-
 			$this->init(
 				array(
 					'app_name'    => 'R2 WC Line Notify',
 					'github_repo' => 'https://github.com/s0985514623/r2-wc-line-notify',
-					'callback'    => array( '\R2\WcLineNotify\Bootstrap', 'instance' ),
+					'callback'    => array( Bootstrap::class, 'instance' ),
 				)
 			);
 		}

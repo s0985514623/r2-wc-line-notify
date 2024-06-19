@@ -10,7 +10,7 @@ namespace R2\WcLineNotify\FrontEnd;
 /**
  * Class Entry
  */
-final class Entry {
+final class FrontEnd {
 	use \J7\WpUtils\Traits\SingletonTrait;
 
 	/**
@@ -20,4 +20,4 @@ final class Entry {
 	}
 }
 
-// Entry::instance();
+// FrontEnd::instance();

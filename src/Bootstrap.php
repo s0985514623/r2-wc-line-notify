@@ -3,10 +3,13 @@
  * Bootstrap
  */
 
-declare (strict_types = 1);
-
 namespace R2\WcLineNotify;
 
+// autoload
+use R2\WcLineNotify\Admin\SettingPage;
+use R2\WcLineNotify\Admin\Action;
+
+use R2\WcLineNotify\Plugin;
 /**
  * Class Bootstrap
  */
@@ -18,12 +21,11 @@ final class Bootstrap {
 	 * Constructor
 	 */
 	public function __construct() {
-		require_once __DIR__ . '/utils/index.php';
-		require_once __DIR__ . '/admin/index.php';
-		require_once __DIR__ . '/front-end/index.php';
 
 		\add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_script' ), 99 );
-		\add_action( 'wp_enqueue_scripts', array( $this, 'frontend_enqueue_script' ), 99 );
+		// \add_action( 'wp_enqueue_scripts', array( $this, 'frontend_enqueue_script' ), 99 );
+		SettingPage::instance();
+		Action::instance();
 	}
 
 	/**
@@ -35,7 +37,11 @@ final class Bootstrap {
 	 * @return void
 	 */
 	public function admin_enqueue_script( $hook ): void {
-		$this->enqueue_script();
+		// Only load on plugin page
+		$screen = get_current_screen();
+		if ( $screen->id == 'toplevel_page_' . Plugin::$kebab ) {
+			$this->enqueue_script();
+		}
 	}
 
 
