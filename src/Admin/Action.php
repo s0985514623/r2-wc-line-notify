@@ -32,7 +32,7 @@ final class Action {
 	public function __construct() {
 		$this->setting_page_instance = SettingPage::instance();
 		$this->token                 = $this->setting_page_instance->get_options_data()['token'];
-		$state                       = json_decode( $this->setting_page_instance->get_options_data()['state'] );
+		$state                       = isset( $this->setting_page_instance->get_options_data()['state'] ) ? json_decode( $this->setting_page_instance->get_options_data()['state'] ) : array();
 		$sanitize_state              = array_map( array( $this, 'remove_wc_prefix_order_status' ), $state );
 		\add_action( 'woocommerce_new_order', array( $this, 'new_order' ), 10, 2 );
 		foreach ( $sanitize_state as $status ) {
