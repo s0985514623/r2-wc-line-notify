@@ -16,7 +16,7 @@ final class FrontEnd {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	private function __construct() {
 	}
 }
 

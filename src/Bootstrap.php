@@ -20,12 +20,12 @@ final class Bootstrap {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	private function __construct() {
 
 		\add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_script' ), 99 );
 		// \add_action( 'wp_enqueue_scripts', array( $this, 'frontend_enqueue_script' ), 99 );
 		SettingPage::instance();
-		Action::instance();
+		// Action::instance();
 	}
 
 	/**

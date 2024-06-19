@@ -29,15 +29,19 @@ final class Action {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	private function __construct() {
 		$this->setting_page_instance = SettingPage::instance();
-		$this->token                 = $this->setting_page_instance->get_options_data()['token'];
-		$state                       = isset( $this->setting_page_instance->get_options_data()['state'] ) ? json_decode( $this->setting_page_instance->get_options_data()['state'] ) : array();
-		$sanitize_state              = array_map( array( $this, 'remove_wc_prefix_order_status' ), $state );
-		\add_action( 'woocommerce_new_order', array( $this, 'new_order' ), 10, 2 );
-		foreach ( $sanitize_state as $status ) {
-			\add_action( 'woocommerce_order_status_' . $status, array( $this, 'woocommerce_order_status_to_action' ), 10, 3 );
+		$this->token                 = $this->setting_page_instance->get_options_data()['token'] ?? '';
+		$state                       = isset( $this->setting_page_instance->get_options_data()['state'] ) ? json_decode( $this->setting_page_instance->get_options_data()['state'], true ) : array();
+		// var_dump( $this->setting_page_instance->get_options_data()['state'] );
+		// var_dump( ( $state ) );
+		$sanitize_state = array_map( array( $this, 'remove_wc_prefix_order_status' ), $state );
 
+		if ( ! empty( $this->token ) ) {
+			\add_action( 'woocommerce_new_order', array( $this, 'new_order' ), 10, 2 );
+			foreach ( $sanitize_state as $status ) {
+				\add_action( 'woocommerce_order_status_' . $status, array( $this, 'woocommerce_order_status_to_action' ), 10, 3 );
+			}
 		}
 	}
 	/**

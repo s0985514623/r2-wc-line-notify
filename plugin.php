@@ -35,8 +35,7 @@ if ( ! \class_exists( 'R2\WcLineNotify\Plugin' ) ) {
 		/**
 		 * Constructor
 		 */
-		public function __construct() {
-
+		private function __construct() {
 			// $this->required_plugins = array(
 			// array(
 			// 'name'     => 'WooCommerce',

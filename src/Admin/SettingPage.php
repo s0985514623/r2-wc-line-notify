@@ -35,7 +35,7 @@ final class SettingPage {
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
+	private function __construct() {
 		$this->get_base64_svg();
 		$this->get_options_data();
 		$this->get_order_data();
@@ -48,7 +48,6 @@ final class SettingPage {
 	public function r2_register_settings() {
 		// 註冊設定選項，自動將數據保存到 wp_options 表中key為options_name.
 		\register_setting( Plugin::$snake . '_group', Plugin::$snake, array( $this, 'sanitize_data' ) );
-
 		// 新增設定區段.
 		add_settings_section(
 			Plugin::$snake . '_section', // 區段 ID
@@ -148,7 +147,13 @@ final class SettingPage {
 			$sanitary_values['message'] = esc_textarea( $input['message'] );
 		}
 		if ( isset( $input['state'] ) ) {
-			$sanitary_values['state'] = wp_json_encode( $input['state'] );
+
+			// 檢查 state 是否已經是字符串，如果是則不進行 JSON 編碼
+			if ( is_array( $input['state'] ) ) {
+				$sanitary_values['state'] = wp_json_encode( $input['state'] );
+			} else {
+				$sanitary_values['state'] = $input['state'];
+			}
 		}
 		return $sanitary_values;
 	}
