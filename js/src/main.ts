@@ -3,6 +3,12 @@ import '@/assets/scss/index.scss'
 ;(function ($) {
   const textarea = $('#r2_wc_line_notify_message')
 
+  //預設訊息
+  $(document).on('click', '#add_default_pattern', function (e) {
+    textarea.val(($('#default_message').val() as string) || '')
+    return false
+  })
+
   // 監聽點擊事件
 
   $(document).on('click', '.shortcode-code', function (e) {

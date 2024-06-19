@@ -31,7 +31,12 @@ final class SettingPage {
 	 * @var array
 	 */
 	private $order_data;
-
+	/**
+	 * Default textarea
+	 *
+	 * @var string
+	 */
+	private $default_message = "【新訂單來囉！】\n【訂單編號】：[order_id]\n【訂單總金額】：[order_total]\n【付款方式】：[order_payment]\n【訂購商品及數量】：[products]\n【訂單時間】：[order_time]\n--收件人資料--\n【收件人名字】：[order_customer]\n【收件人電話】：[order_phone]\n【備註】：[order_note]";
 	/**
 	 * Constructor
 	 */
@@ -189,6 +194,13 @@ final class SettingPage {
 			esc_attr( Plugin::$snake ),
 			esc_attr( Plugin::$snake ),
 			isset( $this->options_data['message'] ) ? esc_attr( $this->options_data['message'] ) : ''
+		);
+		printf(
+			'<textarea id="default_message" style="display: none;">%s</textarea>
+			<p>
+		<a href="javascript:void(0)" class="button button-secondary" id="add_default_pattern">預設內容</a>
+		</p>',
+			esc_textarea( $this->default_message )
 		);
 		print( '<p>
 		<strong>Shortcode</strong> <br><span class="shortcodeBadge" style="max-width: 500px;display:block;">
